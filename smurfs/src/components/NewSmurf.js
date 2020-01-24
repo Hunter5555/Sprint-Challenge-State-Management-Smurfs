@@ -6,11 +6,13 @@ const AddSmurf = props => {
     console.log(`NewSmurf props`, props)
       const[smurf, setSmurf] = useState({name:"", age:"", height:""})
 
+     
       const handleChanges = e =>{
           //name and value from input fields, sets key: value pairs
         setSmurf({...smurf, [e.target.name]: e.target.value})
       }
 
+     
       const logValues = event => {
         event.preventDefault();
         props.new_smurf(smurf);
@@ -21,7 +23,8 @@ const AddSmurf = props => {
         });
       };
 
-    return (
+    
+      return (
       <form onSubmit={logValues}>
         <label>Smurf's Name
         <input
@@ -33,6 +36,7 @@ const AddSmurf = props => {
           value={smurf.name}
           placeholder="Smurf Name"
         />
+
         </label>
         {/* two ways to create labels, first way, wrapped as in above */}
         <label forHtml="sage">Age</label>
@@ -54,12 +58,15 @@ const AddSmurf = props => {
           value={smurf.height}
           placeholder="height inches"
         />
+
         </label>
         <button onClick={logValues}> Add Smurf </button>
       </form>
     );
   }
-export default connect(
+
+
+  export default connect(
   null,
   { new_smurf }
 )(AddSmurf);
